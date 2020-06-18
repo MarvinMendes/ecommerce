@@ -1,4 +1,4 @@
-package com.algaworks.ecommerce.model.product.util;
+package com.algaworks.ecommerce.util;
 
 import com.algaworks.ecommerce.model.product.Product;
 
@@ -12,8 +12,8 @@ public class InitPersistence {
                 .createEntityManagerFactory("Ecommerce-PU");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
 
-        Product produto = entityManager.find(Product.class, 1);
-        System.out.println(produto.getName());
+        Product product = entityManager.find(Product.class,  1);
+        System.out.println(product.getName());
 
         entityManager.close();
         entityManagerFactory.close();
