@@ -2,17 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4b69cf91-9cef-4425-9022-518fe15a9c5e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/algaworks/ecommerce/EntityManagerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/algaworks/ecommerce/testejunit/RegisterTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ecommerce-api.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce-api.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/ecommerce/model/product/util/InitPersistence.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/ecommerce/util/InitPersistence.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/banco-de-dados/dados-iniciais.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/banco-de-dados/dados-iniciais.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/algaworks/ecommerce/testejunit/RegisterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/algaworks/ecommerce/testejunit/RegisterTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/banco-de-dados/dados-iniciais.sql" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/banco-de-dados/dados-iniciais.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,14 +85,14 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="Errors" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.algaworks.ecommerce" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.RegisterTest.findById">
+  <component name="RunManager" selected="JUnit.RegisterTest.updateObject">
     <configuration name="InitPersistence" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.algaworks.ecommerce.util.InitPersistence" />
       <module name="ecommerce-api" />
@@ -128,8 +122,59 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="RegisterTest.insertObject" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ecommerce-api" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.algaworks.ecommerce.testejunit.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.algaworks.ecommerce.testejunit" />
+      <option name="MAIN_CLASS_NAME" value="com.algaworks.ecommerce.testejunit.RegisterTest" />
+      <option name="METHOD_NAME" value="insertObject" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RegisterTest.removeObject" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ecommerce-api" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.algaworks.ecommerce.testejunit.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.algaworks.ecommerce.testejunit" />
+      <option name="MAIN_CLASS_NAME" value="com.algaworks.ecommerce.testejunit.RegisterTest" />
+      <option name="METHOD_NAME" value="removeObject" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RegisterTest.updateObject" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ecommerce-api" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.algaworks.ecommerce.testejunit.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.algaworks.ecommerce.testejunit" />
+      <option name="MAIN_CLASS_NAME" value="com.algaworks.ecommerce.testejunit.RegisterTest" />
+      <option name="METHOD_NAME" value="updateObject" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.RegisterTest.updateObject" />
+        <item itemvalue="JUnit.RegisterTest.insertObject" />
+        <item itemvalue="JUnit.RegisterTest.removeObject" />
         <item itemvalue="JUnit.RegisterTest.findById" />
         <item itemvalue="Application.InitPersistence" />
       </list>
@@ -148,12 +193,7 @@
               <path>
                 <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
                 <item name="algaworks_ecommerce: root" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-                <item name="com.intellij.database.console.session.MessageBusSession@5987e3b5" type="9fbbdea:ServiceModel$ServiceNode" />
-              </path>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="algaworks_ecommerce: root" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-                <item name="com.intellij.database.console.session.MessageBusSession@380e7526" type="9fbbdea:ServiceModel$ServiceNode" />
+                <item name="com.intellij.database.console.session.MessageBusSession@29d922f" type="9fbbdea:ServiceModel$ServiceNode" />
               </path>
             </expand>
             <select />
@@ -172,7 +212,10 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1592362827629</updated>
-      <workItem from="1592362830564" duration="10435000" />
+      <workItem from="1592362830564" duration="11844000" />
+      <workItem from="1592794859645" duration="2528000" />
+      <workItem from="1592885031796" duration="2655000" />
+      <workItem from="1592887995399" duration="965000" />
     </task>
     <servers />
   </component>
@@ -196,26 +239,30 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="420" y="349" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1536.864@0.0.1536.864" timestamp="1592366516453" />
-    <state width="1492" height="313" key="GridCell.Tab.0.bottom" timestamp="1592456012854">
-      <screen x="0" y="0" width="1536" height="864" />
+    <state width="1476" height="243" key="GridCell.Tab.0.bottom" timestamp="1592888971306">
+      <screen x="1920" y="2" width="1920" height="1080" />
     </state>
+    <state width="1476" height="243" key="GridCell.Tab.0.bottom/0.0.1536.864/1920.2.1920.1080@1920.2.1920.1080" timestamp="1592888971306" />
     <state width="1492" height="313" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1592456012854" />
-    <state width="1492" height="313" key="GridCell.Tab.0.center" timestamp="1592456012854">
-      <screen x="0" y="0" width="1536" height="864" />
+    <state width="1476" height="243" key="GridCell.Tab.0.center" timestamp="1592888971301">
+      <screen x="1920" y="2" width="1920" height="1080" />
     </state>
+    <state width="1476" height="243" key="GridCell.Tab.0.center/0.0.1536.864/1920.2.1920.1080@1920.2.1920.1080" timestamp="1592888971301" />
     <state width="1492" height="313" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1592456012854" />
-    <state width="1492" height="313" key="GridCell.Tab.0.left" timestamp="1592456012854">
-      <screen x="0" y="0" width="1536" height="864" />
+    <state width="1476" height="243" key="GridCell.Tab.0.left" timestamp="1592888971301">
+      <screen x="1920" y="2" width="1920" height="1080" />
     </state>
+    <state width="1476" height="243" key="GridCell.Tab.0.left/0.0.1536.864/1920.2.1920.1080@1920.2.1920.1080" timestamp="1592888971301" />
     <state width="1492" height="313" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1592456012854" />
-    <state width="1492" height="313" key="GridCell.Tab.0.right" timestamp="1592456012854">
-      <screen x="0" y="0" width="1536" height="864" />
+    <state width="1476" height="243" key="GridCell.Tab.0.right" timestamp="1592888971306">
+      <screen x="1920" y="2" width="1920" height="1080" />
     </state>
+    <state width="1476" height="243" key="GridCell.Tab.0.right/0.0.1536.864/1920.2.1920.1080@1920.2.1920.1080" timestamp="1592888971306" />
     <state width="1492" height="313" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1592456012854" />
-    <state x="277" y="75" key="SettingsEditor" timestamp="1592363239445">
+    <state x="277" y="75" key="SettingsEditor" timestamp="1592794820064">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="277" y="75" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1592363239445" />
+    <state x="277" y="75" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1592794820064" />
     <state x="584" y="210" key="chooseDestDirectoryDialog" timestamp="1592366452793">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
