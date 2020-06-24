@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -15,8 +16,8 @@ public class Order implements Serializable {
     @Id
     @EqualsAndHashCode.Include
     private Integer id;
-    private Date requestDate;
-    private Date conclusionDate;
+    private LocalDateTime requestDate;
+    private LocalDateTime conclusionDate;
     private Invoice invoice;
     private BigDecimal total;
     private Status status;
