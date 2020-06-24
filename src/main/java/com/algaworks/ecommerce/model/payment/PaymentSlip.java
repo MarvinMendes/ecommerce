@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.io.Serializable;
 
 @Entity
@@ -13,8 +14,9 @@ import java.io.Serializable;
 public class PaymentSlip implements Serializable {
     private static final long serialVersionUID = 3567223986414541095L;
 
+    @Id
     private Integer id;
     private String barCode;
-    private Order orderId;
+    private Integer orderId;
     private StatusPayment status;
 }
