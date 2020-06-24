@@ -2,6 +2,7 @@ package com.algaworks.ecommerce.testejunit;
 
 import com.algaworks.ecommerce.EntityManagerTest;
 import com.algaworks.ecommerce.model.client.Client;
+import com.algaworks.ecommerce.model.client.Gender;
 import com.algaworks.ecommerce.model.product.Product;
 import org.junit.Assert;
 import org.junit.Test;
@@ -18,6 +19,7 @@ public class RegisterClientTest extends EntityManagerTest {
 
         client.setId(1);
         client.setName("Fernando da Silva");
+        client.setGender(Gender.MEN);
 
         em.getTransaction().begin();
         em.persist(client);

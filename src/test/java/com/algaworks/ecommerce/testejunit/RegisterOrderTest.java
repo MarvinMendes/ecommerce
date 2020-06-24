@@ -7,6 +7,7 @@ import com.algaworks.ecommerce.model.order.Status;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.beans.Transient;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
@@ -15,16 +16,16 @@ public class RegisterOrderTest extends EntityManagerTest {
     @Test
     public void insertOrder() {
 
-        Order order = new Order();
         DeliveryAddress deliveryAddress = new DeliveryAddress();
 
-        deliveryAddress.setId(1);
         deliveryAddress.setNumber("100");
         deliveryAddress.setNeighborhood("Centro");
         deliveryAddress.setStreet("Rua Um");
         deliveryAddress.setZipcode("32150030");
         deliveryAddress.setCity("Belo Horizonte");
         deliveryAddress.setState("MG");
+
+        Order order = new Order();
 
         order.setId(1);
         order.setRequestDate(LocalDateTime.now());
@@ -37,8 +38,9 @@ public class RegisterOrderTest extends EntityManagerTest {
         em.getTransaction().commit();
         em.clear();
 
-        Order orderSaved = em.find(Order.class, 1);
+        Order orderSaved = em.find(Order.class, order.getId());
         Assert.assertNotNull(orderSaved);
+        Assert.assertNotNull(orderSaved.getDeliveryAddress());
         Assert.assertNotNull(orderSaved.getDeliveryAddress().getCity());
 
     }
