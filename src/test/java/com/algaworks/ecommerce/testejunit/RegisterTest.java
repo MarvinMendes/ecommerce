@@ -3,12 +3,9 @@ package com.algaworks.ecommerce.testejunit;
 import com.algaworks.ecommerce.EntityManagerTest;
 import com.algaworks.ecommerce.model.product.Product;
 import org.junit.*;
-import org.junit.experimental.theories.suppliers.TestedOn;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import java.math.BigDecimal;
+
 
 public class RegisterTest extends EntityManagerTest {
 
