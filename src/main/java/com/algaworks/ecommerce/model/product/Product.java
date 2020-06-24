@@ -2,6 +2,7 @@ package com.algaworks.ecommerce.model.product;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Column;
@@ -14,6 +15,7 @@ import java.math.BigDecimal;
 @Setter
 @Entity
 @EqualsAndHashCode
+@NoArgsConstructor
 public class Product implements Serializable {
     private static final long serialVersionUID = -376156493036647753L;
 

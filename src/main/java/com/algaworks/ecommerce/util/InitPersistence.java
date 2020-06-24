@@ -13,7 +13,6 @@ public class InitPersistence {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
 
         Product product = entityManager.find(Product.class,  1);
-        System.out.println(product.getName());
 
         entityManager.close();
         entityManagerFactory.close();
