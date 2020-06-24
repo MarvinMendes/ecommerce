@@ -17,4 +17,6 @@ public class Client implements Serializable {
     @Id
     private Integer id;
     private String name;
+    private Gender gender;
+
 }
