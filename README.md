@@ -1,2 +1,2 @@
 # ecommerce
-Criando um ecommerce com Java e JPA
+Criando um ecommerce com Java e JPA + MySql
