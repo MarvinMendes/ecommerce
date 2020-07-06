@@ -16,6 +16,7 @@ public class PaymentSlip implements Serializable {
 
     @Id
     @EqualsAndHashCode.Include
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(name = "bar_code")
     private String barCode;

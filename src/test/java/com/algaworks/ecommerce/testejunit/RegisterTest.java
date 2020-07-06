@@ -12,7 +12,6 @@ public class RegisterTest extends EntityManagerTest {
     @Test
     public void insertObject() {
         Product product = new Product();
-        product.setId(2);
         product.setName("Camera Canon");
         product.setDescription("A melhor definição para suas fotos.");
         product.setValue(new BigDecimal(5000));

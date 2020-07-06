@@ -18,6 +18,7 @@ public class Order implements Serializable {
 
     @Id
     @EqualsAndHashCode.Include
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(name = "request_date")
     private LocalDateTime requestDate;
