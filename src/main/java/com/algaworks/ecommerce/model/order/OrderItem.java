@@ -21,8 +21,9 @@ public class OrderItem implements Serializable {
     private Integer id;
     @Column(name = "product_id")
     private Integer productId;
-    @Column(name = "order_id")
-    private Integer orderId;
+    @ManyToOne
+    @JoinColumn(name = "order_id")
+    private Order orderId;
     @Column(name = "product_price")
     private BigDecimal productPrice;
     @Column(name = "quantity")
