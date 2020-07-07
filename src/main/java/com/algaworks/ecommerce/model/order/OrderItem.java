@@ -1,5 +1,6 @@
 package com.algaworks.ecommerce.model.order;
 
+import com.algaworks.ecommerce.model.product.Product;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,8 +20,9 @@ public class OrderItem implements Serializable {
     @EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name = "product_id")
-    private Integer productId;
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private Product productId;
     @ManyToOne
     @JoinColumn(name = "order_id")
     private Order orderId;

@@ -5,6 +5,7 @@ import com.algaworks.ecommerce.model.client.Client;
 import com.algaworks.ecommerce.model.order.Order;
 import com.algaworks.ecommerce.model.order.OrderItem;
 import com.algaworks.ecommerce.model.order.Status;
+import com.algaworks.ecommerce.model.product.Category;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -49,8 +50,30 @@ public class RelationshipsTest extends EntityManagerTest {
         em.getTransaction().commit();
         em.clear();
 
-        Order orderSaved = em.find(Order.class, 1);
+        Order orderSaved = em.find(Order.class, order.getId());
         Assert.assertNotNull(orderSaved.getOrderItem());
+
+    }
+
+    @Test
+    public void autoRelationships() {
+        Category categoryFather = new Category();
+        categoryFather.setName("Eletrônicos");
+
+        Category category = new Category();
+        category.setName("Celulares");
+        category.setCategoryFather(categoryFather);
+
+        em.getTransaction().begin();
+        em.persist(categoryFather);
+        em.persist(category);
+        em.getTransaction().commit();
+
+        em.clear();
+
+        Category categorySaved = em.find(Category.class, category.getId());
+
+        Assert.assertNotNull(categorySaved.getCategoryFather());    
 
     }
 

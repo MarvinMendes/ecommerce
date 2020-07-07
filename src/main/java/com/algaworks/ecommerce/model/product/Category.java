@@ -6,6 +6,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
+
 @Getter
 @Setter
 @Entity
@@ -19,8 +21,11 @@ public class Category implements Serializable {
     private Integer id;
     @Column(name = "category_name")
     private String name;
-    @Column(name = "category_father_id")
-    private Integer categoryFatherId;
+    @ManyToOne
+    @JoinColumn(name = "categoty_father_id")
+    private Category categoryFather;
+    @OneToMany(mappedBy = "categoryFather")
+    private Set<Category> category;
 }
 
 
