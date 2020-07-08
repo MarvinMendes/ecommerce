@@ -18,8 +18,9 @@ public class Stock implements Serializable {
     @EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name = "product_id")
-    private Integer productId;
+    @OneToOne(optional = false)
+    @JoinColumn(name = "product_id")
+    private Product product;
     @Column(name = "quantity")
     private Integer quantity;
 }
