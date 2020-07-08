@@ -1,6 +1,7 @@
 package com.algaworks.ecommerce.model.order;
 
 import com.algaworks.ecommerce.model.client.Client;
+import com.algaworks.ecommerce.model.payment.PaymentCredit;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -31,13 +32,14 @@ public class Order implements Serializable {
     private LocalDateTime requestDate;
     @Column(name = "conclusion_date")
     private LocalDateTime conclusionDate;
-    @Column(name = "invoice_id")
-    private Integer invoiceId;
+    @OneToOne(mappedBy = "order")
+    private Invoice invoice;
     @Column(name = "total")
     private BigDecimal total;
     @Enumerated(EnumType.STRING)
     private Status status;
     @Embedded
     private DeliveryAddress deliveryAddress;
-
+    @OneToOne(mappedBy = "order")
+    private PaymentCredit paymentCredit;
 }

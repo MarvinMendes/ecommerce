@@ -2,16 +2,20 @@ package com.algaworks.ecommerce.testejunit.entityRelationships;
 
 import com.algaworks.ecommerce.EntityManagerTest;
 import com.algaworks.ecommerce.model.client.Client;
+import com.algaworks.ecommerce.model.order.Invoice;
 import com.algaworks.ecommerce.model.order.Order;
 import com.algaworks.ecommerce.model.order.OrderItem;
 import com.algaworks.ecommerce.model.order.Status;
+import com.algaworks.ecommerce.model.payment.PaymentCredit;
+import com.algaworks.ecommerce.model.payment.StatusPayment;
 import com.algaworks.ecommerce.model.product.Category;
 import com.algaworks.ecommerce.model.product.Product;
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.math.BigDecimal;
-import java.util.Arrays;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -101,6 +105,42 @@ public class RelationshipsTest extends EntityManagerTest {
 
         Assert.assertFalse(categorySaved.getProducts().isEmpty());
 
+    }
+
+    @Test
+    public void oneToOneOrderCreditTest() {
+        Order order = em.find(Order.class, 1);
+        PaymentCredit paymentCredit = new PaymentCredit();
+        paymentCredit.setNumber("0987-7894-7852-4203");
+        paymentCredit.setStatus(StatusPayment.PROCESSING);
+        paymentCredit.setOrder(order);
+
+        em.getTransaction().begin();
+        em.persist(paymentCredit);
+        em.getTransaction().commit();
+
+        em.clear();
+
+        PaymentCredit paymentSaved = em.find(PaymentCredit.class, paymentCredit.getId());
+
+        Assert.assertNotNull(paymentSaved.getOrder());
+    }
+
+    @Test
+    public void onoToOneOrderInvoiceTest() {
+        Order order = em.find(Order.class, 1);
+        Invoice invoice = new Invoice();
+        invoice.setEmissionDate(new Date());
+        invoice.setOrder(order);
+
+        em.getTransaction().begin();
+        em.persist(invoice);
+        em.getTransaction().commit();
+        em.clear();
+
+        em.find(Invoice.class, invoice.getId());
+
+        Assert.assertNotNull(invoice.getOrder());
     }
 
 }

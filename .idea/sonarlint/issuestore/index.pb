@@ -38,3 +38,7 @@ l
 <src/main/java/com/algaworks/ecommerce/model/order/Order.java,1\c\1c3838a9b42320e1413471d8ce28785b3199faef
 w
 Gsrc/test/java/com/algaworks/ecommerce/testejunit/RegisterOrderTest.java,1\f\1f071730ada259991d55711bcab6ee9891e3a05a
+l
+<src/test/java/com/algaworks/ecommerce/EntityManagerTest.java,a\3\a38649c78c35c6c15529fe201e889ad3fdef19de
+‹
+[src/test/java/com/algaworks/ecommerce/testejunit/entityRelationships/RelationshipsTest.java,4\6\468b5e97d8ee6192af081cddd1324f67e8686e7d

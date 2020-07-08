@@ -3,3 +3,5 @@ insert into product (id, product_name, product_value, product_description) value
 insert into product (id, product_name, product_value, product_description) values (3, 'Nikon', 1500.0, 'Uma nova perspectiva para suas fotos.');
 insert into client (id, client_name) values (2, 'Mario Jorge');
 insert into client (id, client_name) values (3, 'Marcelo Mendes Lopes');
+
+insert into orders(id, status, total, client_id) values (1, 'WAITING', 2300, 2);

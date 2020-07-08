@@ -1,5 +1,6 @@
 package com.algaworks.ecommerce.model.payment;
 
+import com.algaworks.ecommerce.model.order.Order;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,8 +19,9 @@ public class PaymentCredit implements Serializable {
     @EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name = "order_id")
-    private Integer orderId;
+    @OneToOne
+    @JoinColumn(name = "order_id")
+    private Order order;
     @Enumerated(EnumType.STRING)
     private StatusPayment status;
     @Column(name = "number")

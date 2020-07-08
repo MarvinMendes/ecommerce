@@ -19,9 +19,11 @@ public class Invoice implements Serializable {
     @EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name = "order_id")
-    private Integer orderId;
+    @OneToOne
+    @JoinColumn(name = "order_id")
+    private Order order;
     private String xml;
     @Column(name = "emission_date")
     private Date emissionDate;
+
 }
