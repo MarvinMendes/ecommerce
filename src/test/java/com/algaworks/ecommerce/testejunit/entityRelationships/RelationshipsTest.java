@@ -44,19 +44,22 @@ public class RelationshipsTest extends EntityManagerTest {
         orderItem.setProductPrice(new BigDecimal(890));
         orderItem.setQuantity(3);
 
+        Client client = em.find(Client.class, 2);
+
         Order order = new Order();
         //order.setOrderItem(Stream.of(orderItem).collect(Collectors.toSet()));
         order.setTotal(new BigDecimal(789.90));
         order.setStatus(Status.PAID);
+        order.setItems(Stream.of(orderItem).collect(Collectors.toSet()));
+        order.setClient(client);
 
         em.getTransaction().begin();
-        em.persist(orderItem);
         em.persist(order);
         em.getTransaction().commit();
         em.clear();
 
         Order orderSaved = em.find(Order.class, order.getId());
-        //Assert.assertNotNull(orderSaved.getOrderItem());
+        Assert.assertNotNull(orderSaved.getItems());
 
     }
 

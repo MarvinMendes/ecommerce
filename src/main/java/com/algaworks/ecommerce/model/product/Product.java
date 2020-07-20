@@ -6,12 +6,14 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import net.bytebuddy.asm.Advice;
 
+import javax.management.DescriptorKey;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicReference;
 
 @Getter
 @Setter
@@ -40,4 +42,12 @@ public class Product implements Serializable {
     private Set<Category> categories;
     @OneToOne(mappedBy = "product")
     private Stock stock;
+    @ElementCollection
+    @Column(name = "tag")
+    @CollectionTable(name = "product_tag", joinColumns = @JoinColumn(name = "product_id"))
+    private Set<String> tags;
+    @ElementCollection
+    @CollectionTable(name = "product_attribute", joinColumns = @JoinColumn(name = "product_id"))
+    private Set<Attribute> attributes;
+
 }

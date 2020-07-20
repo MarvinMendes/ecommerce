@@ -3,6 +3,8 @@ package com.algaworks.ecommerce.testejunit.advancedMappings;
 import com.algaworks.ecommerce.EntityManagerTest;
 import com.algaworks.ecommerce.model.client.Client;
 import com.algaworks.ecommerce.model.order.*;
+import com.algaworks.ecommerce.model.payment.PaymentCredit;
+import com.algaworks.ecommerce.model.payment.StatusPayment;
 import com.algaworks.ecommerce.model.product.Product;
 import org.junit.Assert;
 import org.junit.Test;
@@ -66,6 +68,29 @@ public class TestComposePK extends EntityManagerTest {
 
         Assert.assertNotNull(invoiceSaved);
         Assert.assertEquals(invoiceSaved.getId(), order.getId());
+
+    }
+
+    @Test
+    public void testWithMapsIdPaymentCredit() {
+        Order order = em.find(Order.class, 1);
+
+        PaymentCredit paymentCredit = new PaymentCredit();
+        paymentCredit.setOrder(order);
+        paymentCredit.setStatus(StatusPayment.PROCESSING);
+        paymentCredit.setNumber("5423 2354 4865 6548");
+
+
+        em.getTransaction().begin();
+        em.persist(paymentCredit);
+        em.getTransaction().commit();
+
+        em.clear();
+
+        PaymentCredit paymentCreditSaved = em.find(PaymentCredit.class, order.getId());
+
+        Assert.assertNotNull(paymentCreditSaved);
+        Assert.assertEquals(paymentCreditSaved.getId(), order.getId());
 
     }
 

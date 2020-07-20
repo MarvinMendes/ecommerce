@@ -17,8 +17,9 @@ public class PaymentCredit implements Serializable {
 
     @Id
     @EqualsAndHashCode.Include
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "order_id")
     private Integer id;
+    @MapsId
     @OneToOne(optional = false)
     @JoinColumn(name = "order_id")
     private Order order;
