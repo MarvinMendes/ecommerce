@@ -16,20 +16,17 @@ import java.math.BigDecimal;
 public class OrderItem implements Serializable {
     private static final long serialVersionUID = -1609736855687401318L;
 
-    @Id
-    @EqualsAndHashCode.Include
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    @EmbeddedId
+    private OrderItemId id;
     @ManyToOne(optional = false)
-    @JoinColumn(name = "product_id")
-    private Product productId;
-    @ManyToOne
-    @JoinColumn(name = "order_id")
-    private Order orderId;
+    @JoinColumn(name = "product_id", updatable = false, insertable = false)
+    private Product product;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "order_id", updatable = false, insertable = false)
+    private Order order;
     @Column(name = "product_price")
     private BigDecimal productPrice;
     @Column(name = "quantity")
     private Integer quantity;
-
 
 }

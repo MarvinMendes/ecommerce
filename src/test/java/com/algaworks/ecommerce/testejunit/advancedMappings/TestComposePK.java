@@ -2,15 +2,13 @@ package com.algaworks.ecommerce.testejunit.advancedMappings;
 
 import com.algaworks.ecommerce.EntityManagerTest;
 import com.algaworks.ecommerce.model.client.Client;
-import com.algaworks.ecommerce.model.order.Order;
-import com.algaworks.ecommerce.model.order.OrderItem;
-import com.algaworks.ecommerce.model.order.OrderItemId;
-import com.algaworks.ecommerce.model.order.Status;
+import com.algaworks.ecommerce.model.order.*;
 import com.algaworks.ecommerce.model.product.Product;
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 public class TestComposePK extends EntityManagerTest {
 
@@ -18,7 +16,7 @@ public class TestComposePK extends EntityManagerTest {
     public void testComposePK() {
         em.getTransaction().begin();
 
-        Client client = em.find(Client.class, 1);
+        Client client = em.find(Client.class, 2);
         Product product = em.find(Product.class, 1);
 
         Order order = new Order();
@@ -50,10 +48,25 @@ public class TestComposePK extends EntityManagerTest {
     }
 
     @Test
-    public void findItem() {
-        OrderItem orderItem = em.find(OrderItem.class, new OrderItemId(1, 1));
+    public void testWithMapsId() {
+        Order order = em.find(Order.class, 1);
 
-        Assert.assertNotNull(orderItem);
+        Invoice invoice = new Invoice();
+        invoice.setOrder(order);
+        invoice.setEmissionDate(new Date());
+        invoice.setXml("<xml/>");
+
+        em.getTransaction().begin();
+        em.persist(invoice);
+        em.getTransaction().commit();
+
+        em.clear();
+
+        Invoice invoiceSaved = em.find(Invoice.class, order.getId());
+
+        Assert.assertNotNull(invoiceSaved);
+        Assert.assertEquals(invoiceSaved.getId(), order.getId());
+
     }
 
 }

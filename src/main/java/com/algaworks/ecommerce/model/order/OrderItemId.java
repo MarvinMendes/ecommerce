@@ -1,16 +1,16 @@
 package com.algaworks.ecommerce.model.order;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import java.io.Serializable;
 
-@Embeddable
 @Getter
 @Setter
+@Embeddable
+@NoArgsConstructor
+@AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class OrderItemId implements Serializable {
     private static final long serialVersionUID = 7493038957492958533L;

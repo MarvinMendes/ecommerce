@@ -4,10 +4,13 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import net.bytebuddy.asm.Advice;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Set;
 
 @Getter
@@ -27,6 +30,10 @@ public class Product implements Serializable {
     private String description;
     @Column(name = "product_value")
     private BigDecimal value;
+    @Column(name = "creation_date", updatable = false)
+    private LocalDateTime creationDate;
+    @Column(name = "updated_date", insertable = false)
+    private LocalDateTime lastUpdatedDate;
     @ManyToMany
     @JoinTable(name = "product_category", joinColumns = @JoinColumn(name = "product_id"),
                 inverseJoinColumns = @JoinColumn(name = "category_id"))

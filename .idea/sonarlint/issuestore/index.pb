@@ -42,3 +42,9 @@ l
 <src/test/java/com/algaworks/ecommerce/EntityManagerTest.java,a\3\a38649c78c35c6c15529fe201e889ad3fdef19de
 ‹
 [src/test/java/com/algaworks/ecommerce/testejunit/entityRelationships/RelationshipsTest.java,4\6\468b5e97d8ee6192af081cddd1324f67e8686e7d
+‹
+[src/test/java/com/algaworks/ecommerce/testejunit/advancedMappings/TestAdvancedMappings.java,c\d\cd15a96087dae3d97112054e8c816a1c6603e501
+r
+Bsrc/main/java/com/algaworks/ecommerce/model/order/OrderItemId.java,8\1\81ddea380d9efdedd55dda611cd769ad0a5c4b3a
+„
+Tsrc/test/java/com/algaworks/ecommerce/testejunit/advancedMappings/TestComposePK.java,e\9\e949b180509f8a93bdb1d3575294132c28b3d678

@@ -26,8 +26,8 @@ public class Order implements Serializable {
     @ManyToOne(optional = false)
     @JoinColumn(name = "client_id")
     private Client client;
-    @OneToMany(mappedBy = "orderId")
-    private Set<OrderItem> orderItem;
+    @OneToMany(mappedBy = "order")
+    private Set<OrderItem> items;
     @Column(name = "request_date")
     private LocalDateTime requestDate;
     @Column(name = "conclusion_date")
