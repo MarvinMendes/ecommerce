@@ -26,11 +26,11 @@ public class SavingFiles extends EntityManagerTest {
         em.clear();
 
         Order orderSaved = em.find(Order.class, order.getId());
-        Invoice invoiceSaved = em.find(Invoice.class, order.getId());
+        Invoice invoiceSaved = em.find(Invoice.class, invoice.getId());
 
         Assert.assertNotNull(orderSaved.getInvoice().getXml());
         Assert.assertNotNull(invoiceSaved.getXml());
-
+        Assert.assertTrue(invoiceSaved.getXml().length > 0);
 
     }
 

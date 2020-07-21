@@ -1,31 +1,23 @@
 package com.algaworks.ecommerce.model.product;
 
+import com.algaworks.ecommerce.model.commons.EntityBaseCommons;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
-import net.bytebuddy.asm.Advice;
 
-import javax.management.DescriptorKey;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Set;
-import java.util.concurrent.atomic.AtomicReference;
 
 @Getter
 @Setter
 @Entity
 @Table(name = "product")
-public class Product implements Serializable {
+public class Product extends EntityBaseCommons implements Serializable {
     private static final long serialVersionUID = -376156493036647753L;
 
-    @Id
-    @EqualsAndHashCode.Include
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
     @Column(name = "product_name")
     private String name;
     @Column(name = "product_description")

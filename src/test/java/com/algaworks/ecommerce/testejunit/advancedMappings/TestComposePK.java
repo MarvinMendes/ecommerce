@@ -56,7 +56,7 @@ public class TestComposePK extends EntityManagerTest {
         Invoice invoice = new Invoice();
         invoice.setOrder(order);
         invoice.setEmissionDate(new Date());
-        invoice.setXml("<xml/>");
+        invoice.setXml(SavingFiles.loadInvoice());
 
         em.getTransaction().begin();
         em.persist(invoice);

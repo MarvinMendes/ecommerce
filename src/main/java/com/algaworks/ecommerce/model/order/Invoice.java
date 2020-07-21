@@ -1,5 +1,6 @@
 package com.algaworks.ecommerce.model.order;
 
+import com.algaworks.ecommerce.model.commons.EntityBaseCommons;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,18 +13,15 @@ import java.util.Date;
 @Getter
 @Setter
 @Table(name = "invoice")
-public class Invoice implements Serializable {
+public class Invoice extends EntityBaseCommons implements Serializable {
     private static final long serialVersionUID = -8023575054104174055L;
 
-    @Id
-    @EqualsAndHashCode.Include
-    @Column(name = "order_id")
-    private Integer id;
     @MapsId
     @OneToOne(optional = false)
     @JoinColumn(name = "order_id")
     private Order order;
-    private String xml;
+    @Lob
+    private byte[] xml;
     @Column(name = "emission_date")
     private Date emissionDate;
 

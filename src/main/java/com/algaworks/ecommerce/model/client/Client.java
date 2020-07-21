@@ -1,7 +1,7 @@
 package com.algaworks.ecommerce.model.client;
 
+import com.algaworks.ecommerce.model.commons.EntityBaseCommons;
 import com.algaworks.ecommerce.model.order.Order;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,14 +16,10 @@ import java.util.Set;
 @Setter
 @Table(name = "client")
 @SecondaryTable(name = "client_details", pkJoinColumns = @PrimaryKeyJoinColumn(name = "client_id"))
-public class Client implements Serializable {
+public class Client extends EntityBaseCommons implements Serializable {
 
     private static final long serialVersionUID = 5378753649905055112L;
 
-    @Id
-    @EqualsAndHashCode.Include
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
     @Column(name = "client_name")
     private String name;
     @Column(table = "client_details")

@@ -1,5 +1,6 @@
 package com.algaworks.ecommerce.model.product;
 
+import com.algaworks.ecommerce.model.commons.EntityBaseCommons;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,13 +13,9 @@ import java.util.Set;
 @Setter
 @Entity
 @Table(name = "category")
-public class Category implements Serializable {
+public class Category extends EntityBaseCommons implements Serializable {
     private static final long serialVersionUID = 2178156383098657931L;
 
-    @Id
-    @EqualsAndHashCode.Include
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
     @Column(name = "category_name")
     private String name;
     @ManyToOne

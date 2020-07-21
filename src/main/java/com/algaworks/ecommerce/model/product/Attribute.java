@@ -15,6 +15,5 @@ import javax.persistence.Embeddable;
 public class Attribute {
 
     private String name;
-
     private String value;
 }
