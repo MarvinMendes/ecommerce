@@ -78,7 +78,8 @@ public class TestComposePK extends EntityManagerTest {
         PaymentCredit paymentCredit = new PaymentCredit();
         paymentCredit.setOrder(order);
         paymentCredit.setStatus(StatusPayment.PROCESSING);
-        paymentCredit.setNumber("5423 2354 4865 6548");
+        paymentCredit.setCardNumber("5423 2354 4865 6548");
+
 
 
         em.getTransaction().begin();

@@ -2,10 +2,12 @@ package com.algaworks.ecommerce.model.order;
 
 import com.algaworks.ecommerce.model.client.Client;
 import com.algaworks.ecommerce.model.commons.EntityBaseCommons;
+import com.algaworks.ecommerce.model.payment.AbstractPayment;
 import com.algaworks.ecommerce.model.payment.PaymentCredit;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import net.bytebuddy.asm.Advice;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -39,5 +41,44 @@ public class Order extends EntityBaseCommons implements Serializable {
     @Embedded
     private DeliveryAddress deliveryAddress;
     @OneToOne(mappedBy = "order")
-    private PaymentCredit paymentCredit;
+    private AbstractPayment payment;
+
+    public void calcularTotal() {
+        if (items != null) {
+            total = items.stream().map(OrderItem::getProductPrice)
+                    .reduce(BigDecimal.ZERO, BigDecimal::add);
+        }
+    }
+
+    @PrePersist
+    public void aoPersistir() {
+        requestDate = LocalDateTime.now();
+        calcularTotal();
+    }
+
+
+    @PostPersist
+    public void aposPersistir() {
+        System.out.println("Após persistir Pedido.");
+    }
+
+    @PostUpdate
+    public void aposAtualizar() {
+        System.out.println("Após atualizar Pedido.");
+    }
+
+    @PreRemove
+    public void aoRemover() {
+        System.out.println("Antes de remover Pedido.");
+    }
+
+    @PostRemove
+    public void aposRemover() {
+        System.out.println("Após remover Pedido.");
+    }
+
+    @PostLoad
+    public void aoCarregar() {
+        System.out.println("Após carregar o Pedido.");
+    }
 }

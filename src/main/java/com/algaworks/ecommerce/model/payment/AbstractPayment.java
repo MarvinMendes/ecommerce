@@ -1,16 +1,24 @@
 package com.algaworks.ecommerce.model.payment;
 
 import com.algaworks.ecommerce.model.commons.EntityBaseCommons;
+import com.algaworks.ecommerce.model.order.Order;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.io.Serializable;
+import javax.persistence.*;
 
 @Getter
 @Setter
-public abstract class AbstractPayment extends EntityBaseCommons implements Serializable {
-    private static final long serialVersionUID = 8422804185263106977L;
+@Entity
+@Table(name = "payment")
+public abstract class AbstractPayment extends EntityBaseCommons {
 
+    @MapsId
+    @OneToOne(optional = false)
+    @JoinColumn(name = "order_id")
+    private Order order;
 
+    @Enumerated(EnumType.STRING)
+    private StatusPayment status;
 
 }

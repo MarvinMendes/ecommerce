@@ -15,7 +15,7 @@ public class TestSecondaryTable extends EntityManagerTest {
         em.getTransaction().begin();
 
         Client client = em.find(Client.class, 3);
-        client.setGender(Gender.MEN);
+        client.setGender(Gender.MALE);
         client.setDateOfBirth(new Date());
 
         em.getTransaction().commit();

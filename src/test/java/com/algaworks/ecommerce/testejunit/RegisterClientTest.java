@@ -18,7 +18,7 @@ public class RegisterClientTest extends EntityManagerTest {
         Client client = new Client();
 
         client.setName("Fernando da Silva");
-        client.setGender(Gender.MEN);
+        client.setGender(Gender.MALE);
 
         em.getTransaction().begin();
         em.persist(client);

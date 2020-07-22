@@ -113,7 +113,7 @@ public class RelationshipsTest extends EntityManagerTest {
     public void oneToOneOrderCreditTest() {
         Order order = em.find(Order.class, 1);
         PaymentCredit paymentCredit = new PaymentCredit();
-        paymentCredit.setNumber("0987-7894-7852-4203");
+        paymentCredit.setCardNumber("0987-7894-7852-4203");
         paymentCredit.setStatus(StatusPayment.PROCESSING);
         paymentCredit.setOrder(order);
 

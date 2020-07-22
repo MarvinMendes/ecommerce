@@ -16,16 +16,26 @@ public class TestMappingSuperClass extends EntityManagerTest {
         em.getTransaction().begin();
         Client client = new Client();
         client.setDateOfBirth(new Date());
-        client.setGender(Gender.NOTBINARY);
+        client.setGender(Gender.NONBINARY);
         client.setName("Rubens de Oliveira");
         client.setContact(Collections.singletonMap("email", "rubens.oliveira@email.com"));
         em.persist(client);
+
+        Client client1 = new Client();
+        client1.setDateOfBirth(new Date());
+        client1.setGender(Gender.MALE);
+        client1.setName("Rafael Fernandes");
+        client1.setContact(Collections.singletonMap("email", "rafael.fernandes@email.com"));
+        em.persist(client1);
         em.getTransaction().commit();
 
         em.clear();
 
         Client clientSaved = em.find(Client.class, client.getId());
+        Client clientSaved1 = em.find(Client.class, client1.getId());
 
         Assert.assertNotNull(clientSaved);
+        Assert.assertNotNull(clientSaved1);
+
     }
 }
