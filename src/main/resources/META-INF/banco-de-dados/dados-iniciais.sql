@@ -10,4 +10,4 @@ insert into orders(id, client_id, request_date, status, total) values (2, 2, sys
 insert into order_item(order_id, product_id, product_price, quantity) values(1, 1, 499, 2);
 insert into order_item(order_id, product_id, product_price, quantity) values(2, 1, 499, 1);
 
-insert into payment(dtype, order_id, status, bar_code, card_number) values('PaymentCredit', 1, 'PROCESSING', '01234', '123');
+insert into payment_credit(order_id, status, card_number) values(1, 'PROCESSING', '123');

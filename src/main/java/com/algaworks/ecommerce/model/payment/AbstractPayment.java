@@ -10,7 +10,8 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Entity
-@Table(name = "payment")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+//@Table(name = "payment")
 public abstract class AbstractPayment extends EntityBaseCommons {
 
     @MapsId
