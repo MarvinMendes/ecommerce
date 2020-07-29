@@ -24,7 +24,7 @@ public class Order extends EntityBaseCommons implements Serializable {
 
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "client_id")
+    @JoinColumn(name = "client_id", foreignKey = @ForeignKey(name = "fk_order_client"))
     private Client client;
     @OneToMany(mappedBy = "order")
     private Set<OrderItem> items;
@@ -56,7 +56,6 @@ public class Order extends EntityBaseCommons implements Serializable {
         requestDate = LocalDateTime.now();
         calcularTotal();
     }
-
 
     @PostPersist
     public void aposPersistir() {

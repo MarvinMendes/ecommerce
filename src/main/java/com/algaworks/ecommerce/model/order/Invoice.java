@@ -18,7 +18,7 @@ public class Invoice extends EntityBaseCommons implements Serializable {
 
     @MapsId
     @OneToOne(optional = false)
-    @JoinColumn(name = "order_id")
+    @JoinColumn(name = "order_id", foreignKey = @ForeignKey(name = "fk_invoice_order"))
     private Order order;
     @Lob
     @Column(nullable = false)

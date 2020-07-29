@@ -19,7 +19,7 @@ public class Category extends EntityBaseCommons implements Serializable {
     @Column(name = "category_name", nullable = false, length = 100)
     private String name;
     @ManyToOne
-    @JoinColumn(name = "categoty_father_id")
+    @JoinColumn(name = "categoty_father_id", foreignKey = @ForeignKey(name = "fk_category_category_father"))
     private Category categoryFather;
     @OneToMany(mappedBy = "categoryFather")
     private Set<Category> category;

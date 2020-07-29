@@ -1,7 +1,6 @@
 package com.algaworks.ecommerce.model.order;
 
 import com.algaworks.ecommerce.model.product.Product;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,10 +18,10 @@ public class OrderItem implements Serializable {
     @EmbeddedId
     private OrderItemId id;
     @ManyToOne(optional = false)
-    @JoinColumn(name = "product_id", updatable = false, insertable = false)
+    @JoinColumn(name = "product_id",foreignKey = @ForeignKey(name = "fk_order_item_product"), updatable = false, insertable = false)
     private Product product;
     @ManyToOne(optional = false)
-    @JoinColumn(name = "order_id", updatable = false, insertable = false)
+    @JoinColumn(name = "order_id",foreignKey = @ForeignKey(name = "fk_order_item_order") , updatable = false, insertable = false)
     private Order order;
     @Column(name = "product_price", nullable = false)
     private BigDecimal productPrice;

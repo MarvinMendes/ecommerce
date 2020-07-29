@@ -15,7 +15,7 @@ public class Stock extends EntityBaseCommons implements Serializable {
     private static final long serialVersionUID = 6217183583803853194L;
 
     @OneToOne(optional = false)
-    @JoinColumn(name = "product_id")
+    @JoinColumn(name = "product_id", foreignKey = @ForeignKey(name = "fk_stock_product"))
     private Product product;
     @Column(name = "quantity")
     private Integer quantity;
