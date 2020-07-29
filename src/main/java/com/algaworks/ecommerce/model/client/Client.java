@@ -14,14 +14,17 @@ import java.util.Set;
 @Entity
 @Getter
 @Setter
-@Table(name = "client")
+@Table(name = "client", uniqueConstraints = { @UniqueConstraint(name = "unq_cpf", columnNames = "client_cpf")},
+       indexes = { @Index(name = "idx_client_name", columnList = "client_name")})
 @SecondaryTable(name = "client_details", pkJoinColumns = @PrimaryKeyJoinColumn(name = "client_id"))
 public class Client extends EntityBaseCommons implements Serializable {
 
     private static final long serialVersionUID = 5378753649905055112L;
 
-    @Column(name = "client_name")
+    @Column(name = "client_name", nullable = false, length = 100)
     private String name;
+    @Column(name = "client_cpf", length = 14, nullable = false)
+    private String cpf;
     @Column(table = "client_details")
     @Enumerated(EnumType.STRING)
     private Gender gender;

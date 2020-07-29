@@ -13,6 +13,6 @@ import java.io.Serializable;
 public class PaymentSlip extends AbstractPayment implements Serializable {
     private static final long serialVersionUID = 3567223986414541095L;
 
-    @Column(name = "bar_code")
+    @Column(name = "bar_code", nullable = false, length = 100)
     private String barCode;
 }

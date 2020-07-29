@@ -14,13 +14,14 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-@Table(name = "product")
+@Table(name = "product", uniqueConstraints = { @UniqueConstraint(name = "unq_product_name", columnNames = "product_name")},
+        indexes = {@Index (name = "idx_product_name", columnList = "product_name")})
 public class Product extends EntityBaseCommons implements Serializable {
     private static final long serialVersionUID = -376156493036647753L;
 
-    @Column(name = "product_name")
+    @Column(name = "product_name", nullable = false, length = 100)
     private String name;
-    @Column(name = "product_description")
+    @Column(name = "product_description", columnDefinition = "varchar(255) not null default 'description'")
     private String description;
     @Column(name = "product_value")
     private BigDecimal value;

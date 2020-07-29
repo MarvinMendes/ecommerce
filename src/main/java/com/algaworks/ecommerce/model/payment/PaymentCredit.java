@@ -13,6 +13,6 @@ import java.io.Serializable;
 public class PaymentCredit extends AbstractPayment implements Serializable {
     private static final long serialVersionUID = 1039433612722833998L;
 
-    @Column(name = "card_number")
+    @Column(name = "card_number", nullable = false, length = 50)
     private String cardNumber;
 }

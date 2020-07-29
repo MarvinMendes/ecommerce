@@ -14,16 +14,16 @@ import java.io.Serializable;
 public class DeliveryAddress implements Serializable {
     private static final long serialVersionUID = 666906474727026317L;
 
-    @Column(name = "zipcode")
+    @Column(name = "zipcode", length = 9)
     private String zipcode;
-    @Column(name = "street")
+    @Column(name = "street", length = 50)
     private String street;
-    @Column(name = "number")
+    @Column(name = "number", length = 10)
     private String number;
-    @Column(name = "neighborhood")
+    @Column(name = "neighborhood", length = 100)
     private String neighborhood;
-    @Column(name = "city")
+    @Column(name = "city", length = 50)
     private String city;
-    @Column(name = "state")
+    @Column(name = "state", length = 50)
     private String state;
 }

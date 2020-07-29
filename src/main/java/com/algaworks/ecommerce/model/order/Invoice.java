@@ -21,8 +21,9 @@ public class Invoice extends EntityBaseCommons implements Serializable {
     @JoinColumn(name = "order_id")
     private Order order;
     @Lob
+    @Column(nullable = false)
     private byte[] xml;
-    @Column(name = "emission_date")
+    @Column(name = "emission_date", nullable = false)
     private Date emissionDate;
 
 }

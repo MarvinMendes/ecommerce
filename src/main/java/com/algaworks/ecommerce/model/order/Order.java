@@ -34,9 +34,10 @@ public class Order extends EntityBaseCommons implements Serializable {
     private LocalDateTime conclusionDate;
     @OneToOne(mappedBy = "order")
     private Invoice invoice;
-    @Column(name = "total")
+    @Column(name = "total", nullable = false)
     private BigDecimal total;
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private Status status;
     @Embedded
     private DeliveryAddress deliveryAddress;

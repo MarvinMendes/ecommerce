@@ -16,7 +16,7 @@ import java.util.Set;
 public class Category extends EntityBaseCommons implements Serializable {
     private static final long serialVersionUID = 2178156383098657931L;
 
-    @Column(name = "category_name")
+    @Column(name = "category_name", nullable = false, length = 100)
     private String name;
     @ManyToOne
     @JoinColumn(name = "categoty_father_id")

@@ -20,6 +20,7 @@ public abstract class AbstractPayment extends EntityBaseCommons {
     private Order order;
 
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 30)
     private StatusPayment status;
 
 }

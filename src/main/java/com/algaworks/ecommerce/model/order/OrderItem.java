@@ -24,9 +24,9 @@ public class OrderItem implements Serializable {
     @ManyToOne(optional = false)
     @JoinColumn(name = "order_id", updatable = false, insertable = false)
     private Order order;
-    @Column(name = "product_price")
+    @Column(name = "product_price", nullable = false)
     private BigDecimal productPrice;
-    @Column(name = "quantity")
+    @Column(name = "quantity", nullable = false)
     private Integer quantity;
 
 }
