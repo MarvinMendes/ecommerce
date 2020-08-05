@@ -29,7 +29,7 @@ public class Product extends EntityBaseCommons implements Serializable {
     private LocalDateTime creationDate;
     @Column(name = "updated_date", insertable = false)
     private LocalDateTime lastUpdatedDate;
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(name = "product_category", joinColumns = @JoinColumn(name = "product_id", foreignKey = @ForeignKey(name = "fk_product_category")),
                 inverseJoinColumns = @JoinColumn(name = "category_id", foreignKey = @ForeignKey(name = "fk_category_product")))
     private Set<Category> categories;
