@@ -1,6 +1,7 @@
 package com.algaworks.ecommerce.testejunit.advancedMappings;
 
 import com.algaworks.ecommerce.EntityManagerTest;
+import com.algaworks.ecommerce.model.DTO.ProductDTO;
 import com.algaworks.ecommerce.model.client.Client;
 import com.algaworks.ecommerce.model.order.Order;
 import org.junit.Assert;
@@ -47,6 +48,17 @@ public class TesWithJPQL extends EntityManagerTest {
         resultList.forEach(product -> System.out.println("Id: " + product[0] + ", Nome:" + product[1]));
         Assert.assertTrue(resultList.get(0).length == 2);
 
+    }
+
+    @Test
+    public void projectionDTO() {
+        String jpql = "select new com.algaworks.ecommerce.model.DTO.ProductDTO(id, name) from Product";
+
+        TypedQuery<ProductDTO> query = em.createQuery(jpql, ProductDTO.class);
+        List<ProductDTO> resultList = query.getResultList();
+
+        resultList.forEach(productDTO -> System.out.println("ID: " + productDTO.getId() + ", Name: " + productDTO.getName()));
+        Assert.assertFalse(resultList.isEmpty());
     }
 
 }
