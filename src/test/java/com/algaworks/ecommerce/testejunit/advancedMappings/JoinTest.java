@@ -4,6 +4,7 @@ import com.algaworks.ecommerce.EntityManagerTest;
 import com.algaworks.ecommerce.model.order.Order;
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.runner.notification.RunListener;
 
 import javax.persistence.TypedQuery;
 import java.util.List;
@@ -31,6 +32,18 @@ public class JoinTest extends EntityManagerTest {
 
         resultList.forEach(obj -> System.out.println("obj-1" + obj[0] + "obj-2" + obj[1]));
         Assert.assertTrue(resultList.get(0).length == 2);
+
+    }
+
+    @Test
+    public void leftJoin() {
+        String jpql = "select o from Order o left join o.payment pay";
+
+        TypedQuery<Object[]> query = em.createQuery(jpql, Object[].class);
+        List<Object[]> resultList = query.getResultList();
+
+        Assert.assertFalse(resultList.isEmpty());
+
 
     }
 
