@@ -3,8 +3,6 @@ package com.algaworks.ecommerce.testejunit.advancedMappings;
 import com.algaworks.ecommerce.EntityManagerTest;
 import com.algaworks.ecommerce.model.client.Client;
 import com.algaworks.ecommerce.model.order.Order;
-import com.algaworks.ecommerce.model.product.Product;
-import org.hibernate.annotations.GenerationTime;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -38,4 +36,17 @@ public class TesWithJPQL extends EntityManagerTest {
         Assert.assertTrue(Client.class.equals(clientResultList.get(0).getClass()));
         Assert.assertTrue(String.class.equals(resultList.get(0).getClass()));
     }
+
+    @Test
+    public void projections() {
+        String jpql = "select id, name from Product";
+
+        TypedQuery<Object[]> query = em.createQuery(jpql, Object[].class);
+        List<Object[]> resultList = query.getResultList();
+
+        resultList.forEach(product -> System.out.println("Id: " + product[0] + ", Nome:" + product[1]));
+        Assert.assertTrue(resultList.get(0).length == 2);
+
+    }
+
 }
