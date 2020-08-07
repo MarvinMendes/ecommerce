@@ -44,8 +44,23 @@ public class JoinTest extends EntityManagerTest {
 
         Assert.assertFalse(resultList.isEmpty());
 
+    }
+
+    @Test
+    public void findProductInOrder() {
+        String jpql = "select o from Order o left join o.items i join i.product p where p.id = 1";
+        //String jpql = "select o from Order o join o.items i where i.id.productId = 1";
+
+        TypedQuery<Order> query = em.createQuery(jpql, Order.class);
+        List<Order> resultList = query.getResultList();
+
+        resultList.forEach(item -> System.out.println("Obj -- " + item.getItems()));
+
+        Assert.assertFalse(resultList.isEmpty());
+
 
     }
+
 
 
 }
