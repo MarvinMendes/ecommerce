@@ -1,12 +1,16 @@
 package com.algaworks.ecommerce.testejunit.advancedMappings;
 
 import com.algaworks.ecommerce.EntityManagerTest;
+import com.algaworks.ecommerce.model.order.Invoice;
 import com.algaworks.ecommerce.model.order.Order;
+import com.algaworks.ecommerce.model.payment.StatusPayment;
 import org.junit.Assert;
 import org.junit.Test;
-import org.junit.runner.notification.RunListener;
 
+import javax.persistence.TemporalType;
 import javax.persistence.TypedQuery;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 public class JoinTest extends EntityManagerTest {
@@ -58,9 +62,43 @@ public class JoinTest extends EntityManagerTest {
 
         Assert.assertFalse(resultList.isEmpty());
 
-
     }
 
+    @Test
+    public void parameterTest(){
+        String jpql = "select o from Order o join o.payment p where p.status = ?1";
 
+        TypedQuery<Order> query = em.createQuery(jpql, Order.class);
+        TypedQuery<Order> typedQuery = query.setParameter(1, StatusPayment.PROCESSING);
+        List<Order> resultList = typedQuery.getResultList();
+
+        resultList.forEach(i -> System.out.println("Payment" + i.getPayment()));
+        Assert.assertTrue(resultList.size() == 1);
+    }
+
+    @Test
+    public void parameterStringTest(){
+        String jpql = "select o from Order o join o.payment p where p.id = :orderId and p.status = ?1 ";
+
+        TypedQuery<Order> query = em.createQuery(jpql, Order.class);
+        query.setParameter("orderId", 1);
+        query.setParameter(1, StatusPayment.PROCESSING);
+
+        List<Order> resultList = query.getResultList();
+
+        Assert.assertTrue(resultList.size() == 1);
+    }
+
+    @Test
+    public void parameterDateTest(){
+        String jpql = "select i from Invoice i where i.emissionDate <= ?1";
+
+        TypedQuery<Invoice> query = em.createQuery(jpql, Invoice.class);
+        query.setParameter(1, new Date(), TemporalType.TIMESTAMP);
+
+        List<Invoice> resultList = query.getResultList();
+
+        Assert.assertTrue(resultList.size() == 1);
+    }
 
 }

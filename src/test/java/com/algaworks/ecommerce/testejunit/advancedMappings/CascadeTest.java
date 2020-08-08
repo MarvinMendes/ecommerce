@@ -123,6 +123,7 @@ public class CascadeTest extends EntityManagerTest {
 
         order.setItems(Stream.of(orderItem).collect(Collectors.toSet()));
 
+
         em.getTransaction().begin();
         em.merge(order);
         em.getTransaction().commit();
@@ -136,6 +137,29 @@ public class CascadeTest extends EntityManagerTest {
 
     }
 
+
+    @Test
+    public void testProductCategoryCascade() {
+        Product product = em.find(Product.class, 3);
+        product.setValue(new BigDecimal(9000));
+
+        Category category = em.find(Category.class, 1);
+        category.setName("Celulares");
+        category.setProducts(Stream.of(product).collect(Collectors.toSet()));
+
+        product.setCategories(Stream.of(category).collect(Collectors.toSet()));
+
+        em.getTransaction().begin();
+        em.merge(product);
+        em.getTransaction().commit();
+
+        em.clear();
+
+        Product productSaved = em.find(Product.class, product.getId());
+        Assert.assertNotNull(productSaved.getCategories());
+
+
+    }
 
 
 }

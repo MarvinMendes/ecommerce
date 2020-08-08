@@ -1,7 +1,6 @@
 package com.algaworks.ecommerce.model.order;
 
 import com.algaworks.ecommerce.model.commons.EntityBaseCommons;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -23,6 +22,7 @@ public class Invoice extends EntityBaseCommons implements Serializable {
     @Lob
     @Column(nullable = false)
     private byte[] xml;
+    @Temporal(value = TemporalType.TIMESTAMP)
     @Column(name = "emission_date", nullable = false)
     private Date emissionDate;
 
