@@ -1,6 +1,7 @@
 package com.algaworks.ecommerce.testejunit.advancedMappings;
 
 import com.algaworks.ecommerce.EntityManagerTest;
+import com.algaworks.ecommerce.model.client.Client;
 import com.algaworks.ecommerce.model.order.Invoice;
 import com.algaworks.ecommerce.model.order.Order;
 import com.algaworks.ecommerce.model.payment.StatusPayment;
@@ -9,6 +10,7 @@ import org.junit.Test;
 
 import javax.persistence.TemporalType;
 import javax.persistence.TypedQuery;
+import java.io.ObjectStreamException;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
@@ -99,6 +101,18 @@ public class JoinTest extends EntityManagerTest {
         List<Invoice> resultList = query.getResultList();
 
         Assert.assertTrue(resultList.size() == 1);
+    }
+
+    @Test
+    public void parameterLikeTest(){
+        String jpql = "select c from Client c where c.name like concat('%', :name, '%')";
+
+        TypedQuery<Object[]> query = em.createQuery(jpql, Object[].class);
+        query.setParameter("name", 'a');
+
+        List<Object[]> resultList = query.getResultList();
+
+        Assert.assertFalse(resultList.isEmpty());
     }
 
 }
