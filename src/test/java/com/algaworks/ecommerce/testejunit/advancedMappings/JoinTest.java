@@ -5,6 +5,7 @@ import com.algaworks.ecommerce.model.client.Client;
 import com.algaworks.ecommerce.model.order.Invoice;
 import com.algaworks.ecommerce.model.order.Order;
 import com.algaworks.ecommerce.model.payment.StatusPayment;
+import com.algaworks.ecommerce.model.product.Product;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -113,6 +114,18 @@ public class JoinTest extends EntityManagerTest {
         List<Object[]> resultList = query.getResultList();
 
         Assert.assertFalse(resultList.isEmpty());
+    }
+
+    @Test
+    public void expressions() {
+        String jpql = "select p from Product p where p.categories is not empty";
+
+        TypedQuery<Product> query = em.createQuery(jpql, Product.class);
+
+        List<Product> resultList = query.getResultList();
+
+        Assert.assertFalse(resultList.isEmpty());
+
     }
 
 }
