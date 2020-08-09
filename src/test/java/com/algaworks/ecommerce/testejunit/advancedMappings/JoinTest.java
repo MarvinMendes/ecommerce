@@ -12,6 +12,7 @@ import org.junit.Test;
 import javax.persistence.TemporalType;
 import javax.persistence.TypedQuery;
 import java.io.ObjectStreamException;
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
@@ -127,5 +128,46 @@ public class JoinTest extends EntityManagerTest {
         Assert.assertFalse(resultList.isEmpty());
 
     }
+
+    @Test
+    public void conditionalsExpressions() {
+        String jpql = "select p from Product p where p.value > 499.0";
+
+        TypedQuery<Object[]> query = em.createQuery(jpql, Object[].class);
+
+        List<Object[]> resultList = query.getResultList();
+
+        Assert.assertFalse(resultList.isEmpty());
+
+    }
+
+    @Test
+    public void conditionalExpressionsOne() {
+        String jpql = "select p from Product p where p.value > :value";
+
+        TypedQuery<Object[]> query = em.createQuery(jpql, Object[].class);
+        query.setParameter("value", new BigDecimal(498));
+
+        List<Object[]> resultList = query.getResultList();
+
+        Assert.assertFalse(resultList.isEmpty());
+
+    }
+
+    @Test
+    public void betweenExpressions() {
+        String jpql = "select p from Product p where p.value > :min and p.value < :max";
+
+        TypedQuery<Object[]> query = em.createQuery(jpql, Object[].class);
+        query.setParameter("min", new BigDecimal(498.0));
+        query.setParameter("max", new BigDecimal(2000.0));
+
+        List<Object[]> resultList = query.getResultList();
+
+        Assert.assertFalse(resultList.isEmpty());
+
+    }
+
+
 
 }
