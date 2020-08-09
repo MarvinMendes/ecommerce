@@ -1,6 +1,8 @@
 package com.algaworks.ecommerce.testejunit.advancedMappings;
 
 import com.algaworks.ecommerce.EntityManagerTest;
+import com.algaworks.ecommerce.model.client.Client;
+import com.algaworks.ecommerce.model.order.Order;
 import com.algaworks.ecommerce.model.product.Product;
 import org.junit.Assert;
 import org.junit.Test;
@@ -39,6 +41,39 @@ public class TestExpressions extends EntityManagerTest {
 
     }
 
+    @Test
+    public void testDif() {
+        String jpql = "select p from Product p where p.id <> 1";
+
+        TypedQuery<Product> query = em.createQuery(jpql, Product.class);
+        List<Product> resultList = query.getResultList();
+
+        Assert.assertFalse(resultList.isEmpty());
+
+    }
+
+    @Test
+    public void conditionals() {
+        String jpql = "select o from Order o where o.status = 'WAITING' and o.total > 100";
+
+        TypedQuery<Order> query = em.createQuery(jpql, Order.class);
+        List<Order> resultList = query.getResultList();
+
+        Assert.assertFalse(resultList.isEmpty());
+
+    }
+
+    @Test
+    public void ordering() {
+        String jpql = "select c from Client c order by c.name asc";
+
+        TypedQuery<Client> query = em.createQuery(jpql, Client.class);
+        List<Client> resultList = query.getResultList();
+
+        Assert.assertFalse(resultList.isEmpty());
+
+        resultList.forEach(c -> System.out.println(c.getId() + ", " + c.getName()));
+    }
 
 
 }
