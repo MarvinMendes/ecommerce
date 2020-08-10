@@ -3,6 +3,7 @@ package com.algaworks.ecommerce.testejunit.advancedMappings;
 import com.algaworks.ecommerce.EntityManagerTest;
 import com.algaworks.ecommerce.model.client.Client;
 import com.algaworks.ecommerce.model.order.Order;
+import com.algaworks.ecommerce.model.product.Category;
 import com.algaworks.ecommerce.model.product.Product;
 import org.junit.Assert;
 import org.junit.Test;
@@ -73,6 +74,39 @@ public class TestExpressions extends EntityManagerTest {
         Assert.assertFalse(resultList.isEmpty());
 
         resultList.forEach(c -> System.out.println(c.getId() + ", " + c.getName()));
+    }
+
+    @Test
+    public void pageableTest() {
+        String jpql = "select c from Category c order by c.name";
+
+        TypedQuery<Category> query = em.createQuery(jpql, Category.class);
+        query.setFirstResult(3);
+        query.setMaxResults(2);
+
+        List<Category> resultList = query.getResultList();
+        Assert.assertFalse(resultList.isEmpty());
+
+        resultList.forEach(i -> System.out.println(i.getId() + ", " + i.getName()));
+
+    }
+
+    @Test
+    public void functionStrings() {
+
+        String jpql = "select c.name, concat('Categorias: ', c.name) from Category c";
+        String jpql1 = "select c.name, c.id from Category c where length(c.name) > 8";
+        String jpql2 = "select c.name, locate('a', c.name) from Category c";
+        String jpql3 = "select c.name, substring(c.name, 1, 2) from Category c";
+        String jpql4 = "select c.name, lower(c.name) from Category c"; // same to upper
+        String jpql5 = "select c.name, trim(c.name) from Category c";
+
+        TypedQuery<Object[]> query = em.createQuery(jpql1, Object[].class);
+        List<Object[]> resultList = query.getResultList();
+
+        Assert.assertFalse(resultList.isEmpty());
+
+        resultList.forEach(i -> System.out.println(i[0] + " - " + i[1]));
     }
 
 

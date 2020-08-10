@@ -31,7 +31,7 @@ public class RegisterOrderTest extends EntityManagerTest {
 
         Order order = new Order();
 
-        order.setRequestDate(LocalDateTime.now());
+        order.setCreationDate(LocalDateTime.now());
         order.setStatus(Status.WAITING);
         order.setTotal(new BigDecimal(999));
         order.setDeliveryAddress(deliveryAddress);

@@ -8,7 +8,9 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.Set;
 
 @Getter
@@ -25,7 +27,7 @@ public class Product extends EntityBaseCommons implements Serializable {
     private String description;
     @Column(name = "product_value")
     private BigDecimal value;
-    @Column(name = "creation_date", updatable = false)
+    @Column(name = "creation_date")
     private LocalDateTime creationDate;
     @Column(name = "updated_date", insertable = false)
     private LocalDateTime lastUpdatedDate;

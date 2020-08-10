@@ -25,8 +25,8 @@ public class Order extends EntityBaseCommons implements Serializable {
     private Client client;
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<OrderItem> items;
-    @Column(name = "request_date")
-    private LocalDateTime requestDate;
+    @Column(name = "creation_date")
+    private LocalDateTime creationDate;
     @Column(name = "conclusion_date")
     private LocalDateTime conclusionDate;
     @Column(name = "update_date")
@@ -54,7 +54,7 @@ public class Order extends EntityBaseCommons implements Serializable {
 
     @PrePersist
     public void aoPersistir() {
-        requestDate = LocalDateTime.now();
+        creationDate = LocalDateTime.now();
         calcularTotal();
     }
 

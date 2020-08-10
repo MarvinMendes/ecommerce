@@ -22,7 +22,7 @@ public class CascadeTest extends EntityManagerTest {
         Client client = em.find(Client.class, 1);
 
         Order order = new Order();
-        order.setRequestDate(LocalDateTime.now());
+        order.setCreationDate(LocalDateTime.now());
         order.setClient(client);
         order.setStatus(Status.WAITING);
         order.setTotal(product.getValue());
@@ -84,7 +84,7 @@ public class CascadeTest extends EntityManagerTest {
         order.setClient(client);
         order.setStatus(Status.WAITING);
         order.setTotal(BigDecimal.TEN);
-        order.setRequestDate(LocalDateTime.now());
+        order.setCreationDate(LocalDateTime.now());
 
         em.getTransaction().begin();
         em.persist(order);

@@ -23,7 +23,7 @@ public class TestComposePK extends EntityManagerTest {
 
         Order order = new Order();
         order.setClient(client);
-        order.setRequestDate(LocalDateTime.now());
+        order.setCreationDate(LocalDateTime.now());
         order.setStatus(Status.WAITING);
         order.setTotal(product.getValue());
 
