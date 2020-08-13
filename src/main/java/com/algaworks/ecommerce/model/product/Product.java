@@ -27,7 +27,7 @@ public class Product extends EntityBaseCommons implements Serializable {
     private String description;
     @Column(name = "product_value")
     private BigDecimal value;
-    @Column(name = "creation_date")
+    @Column(name = "creation_date", columnDefinition = "DATE")
     private LocalDateTime creationDate;
     @Column(name = "updated_date", insertable = false)
     private LocalDateTime lastUpdatedDate;

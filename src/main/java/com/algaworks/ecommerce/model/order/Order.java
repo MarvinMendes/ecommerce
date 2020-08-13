@@ -25,7 +25,7 @@ public class Order extends EntityBaseCommons implements Serializable {
     private Client client;
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<OrderItem> items;
-    @Column(name = "creation_date")
+    @Column(name = "creation_date", columnDefinition = "DATE")
     private LocalDateTime creationDate;
     @Column(name = "conclusion_date")
     private LocalDateTime conclusionDate;

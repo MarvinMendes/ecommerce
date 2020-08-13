@@ -43,6 +43,20 @@ public class TestExpressions extends EntityManagerTest {
     }
 
     @Test
+    public void testBetweenDate() {
+        String jpql = "select o from Order o where o.creationDate between :minDate and :maxDate";
+
+        TypedQuery<Order> query = em.createQuery(jpql, Order.class);
+        query.setParameter("minDate", LocalDateTime.now().minusDays(11));
+        query.setParameter("maxDate", LocalDateTime.now());
+
+        List<Order> resultList = query.getResultList();
+        resultList.forEach(item -> System.out.print("Order -> " + item.getCreationDate()));
+        Assert.assertNotNull(resultList.isEmpty());
+    }
+
+
+    @Test
     public void testDif() {
         String jpql = "select p from Product p where p.id <> 1";
 
