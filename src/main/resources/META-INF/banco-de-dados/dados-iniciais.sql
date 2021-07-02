@@ -21,14 +21,24 @@ insert into category(category_name) values ('Cozinha');
 insert into category(category_name) values ('Esporte');
 insert into category(category_name) values ('Utensílios para casa');
 
-insert into orders(id, client_id, creation_date, status, total) values (1, 1, date_sub(sysdate(), interval 5 day ) ,'WAITING', 998.0);
-insert into orders(id, client_id, creation_date, status, total) values (2, 2, sysdate(), 'PAID', 499.0);
+insert into orders(id, client_id, creation_date, status, total) values (1, 1, date_sub(sysdate(), interval 5 day ) ,'PAID', 998.0);
+insert into orders(id, client_id, creation_date, status, total) values (2, 2, date_sub(sysdate(),interval 5 day), 'PAID', 499.0);
+insert into orders(id, client_id, creation_date, status, total) values (3, 1, date_sub(sysdate(), interval 5 day ) ,'WAITING', 700.0);
+insert into orders(id, client_id, creation_date, status, total) values (4, 1, date_sub(sysdate(), interval 5 day ) ,'WAITING', 1958.40);
+
+
 
 insert into order_item(order_id, product_id, product_price, quantity) values(1, 1, 499, 2);
 insert into order_item(order_id, product_id, product_price, quantity) values(2, 1, 499, 1);
+insert into order_item(order_id, product_id, product_price, quantity) values(3, 8, 700.0, 1);
+insert into order_item(order_id, product_id, product_price, quantity) values(4, 7, 1958.40, 1);
+
 
 insert into invoice(order_id, emission_date, xml) values(1, sysdate(), '<xml/>');
 
 insert into product_category(product_id, category_id) values(1, 1);
 
-insert into payment_credit(order_id, status, card_number) values(1, 'PROCESSING', '123');
+insert into payment_credit(order_id, status, card_number) values(1, 'RECEIVED', '123');
+insert into payment_credit(order_id, status, card_number) values(3, 'PROCESSING', '456');
+insert into payment_credit(order_id, status, card_number) values(4, 'PROCESSING', '789');
+
