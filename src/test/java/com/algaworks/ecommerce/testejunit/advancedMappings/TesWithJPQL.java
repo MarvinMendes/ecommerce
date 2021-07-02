@@ -1,7 +1,7 @@
 package com.algaworks.ecommerce.testejunit.advancedMappings;
 
 import com.algaworks.ecommerce.EntityManagerTest;
-import com.algaworks.ecommerce.model.DTO.ProductDTO;
+import com.algaworks.ecommerce.DTO.ProductDTO;
 import com.algaworks.ecommerce.model.client.Client;
 import com.algaworks.ecommerce.model.order.Order;
 import org.junit.Assert;
